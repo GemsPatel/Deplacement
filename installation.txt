@@ -1,0 +1,2 @@
+Local:
+      ALTER TABLE `users` ADD `email` VARCHAR(50) NULL DEFAULT NULL AFTER `name`;
