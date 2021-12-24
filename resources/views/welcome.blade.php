@@ -2,14 +2,24 @@
 
 @section('content')
 <div class="container">
-  <div class="flex-center position-ref full-height" style="display: none;">
+  @if($errors->any())
+    <div class="alert alert-danger">
+      Télécharger des données valide<br><br>
+      <ul>
+      @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+      </ul>
+    </div>
+  @endif
+  <div class="flex-center position-ref full-height">
       <div class="content">
           <div class="title">
               Upload sheet (Noramal, Absence, Exception) excel file
           </div>
           <form method="POST" action="{{route('upload-excel')}}" enctype="multipart/form-data">
               @csrf
-              <input type="file" name="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+              <input type="file" name="select_file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
               <button type="submit" class="btn btn-primary">Submit</button>
           </form>
       </div>

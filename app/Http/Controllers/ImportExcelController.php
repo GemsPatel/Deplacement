@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\ExcelSheetDataImport;
 use Illuminate\Http\Request;
 use App\Imports\ListeImport;
 use App\Liste;
@@ -21,13 +22,17 @@ class ImportExcelController extends Controller
          'select_file'  => 'required|mimes:xls,xlsx'
        ]);
 
-       $path = $request->file('select_file')->getRealPath();
        $fileName = pathinfo($request->file('select_file')->getClientOriginalName(), PATHINFO_FILENAME);
-       $import = (new ListeImport())->fromFile($fileName);
-       $data = Excel::import($import, $path);
+      //  $import = (new ListeImport())->fromFile($fileName);
+      //  $path = $request->file('select_file')->getRealPath();
+      //  $data = Excel::import($import, $path);
 
-       $liste = Liste::latest('created_at', 'desc')->first();
+         $liste = Liste::latest('created_at', 'desc')->first();
 
-       return redirect(route('home.liste', $liste->id));
+         $import = ( new ExcelSheetDataImport() )->fromFile($fileName);
+         $import->onlySheets( 'JOURNALIER(NORMALE)', 'ABSENCE', 'EXCEPTIONNELS' );
+         Excel::import( $import, $request->file('select_file') );
+         return redirect(route('home.liste', $liste->id));
+         // return redirect('/')->with('success', 'Imported Successfully.');
     }
 }

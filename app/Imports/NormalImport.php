@@ -2,39 +2,34 @@
 
 namespace App\Imports;
 
-use Illuminate\Validation\Rule;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
-use Maatwebsite\Excel\Row;
-use Maatwebsite\Excel\Concerns\OnEachRow;
-use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use App\SousListe;
 use App\Deplacement;
 use App\Militaire;
 use App\Statut;
 use App\Grade;
+use Illuminate\Validation\Rule;
 
-class JournaliereImport implements OnEachRow, WithValidation, WithHeadingRow
+class NormalImport implements ToModel, WithHeadingRow
 {
-    protected $liste, $sousList;
+    protected $liste_id, $sousList;
 
-    public function __construct(int $liste)
+    public function __construct(int $liste_id)
     {
-      $this->liste = $liste;
+      $this->liste_id = $liste_id;
     }
 
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\onRow|null
-    */
-    public function onRow(Row $row)
+     * @param Collection $collection
+     */
+    public function model(array $row)
     {
-      dd($row);
       $grades = Grade::get()->pluck('slug');
 
-      $data = $row->toArray();
-
+      $data = $row;//->toArray();
       Validator::make($data, [
         'nom' => 'required|string',
         'prenom' => 'required|string',
@@ -45,12 +40,12 @@ class JournaliereImport implements OnEachRow, WithValidation, WithHeadingRow
 
       if(!$this->sousList) {
         $this->sousList = SousListe::create([
-          'liste_id' => $this->liste,
+          'liste_id' => $this->liste_id,
           'statut_id' => Statut::where('slug', 'journaliere')->first()->id,
         ]);
       }
 
-      $cells = $row->toArray();
+      $cells = $row;//->toArray();
 
       $militaire = Militaire::find($cells['cne']);
 
@@ -72,18 +67,5 @@ class JournaliereImport implements OnEachRow, WithValidation, WithHeadingRow
         'sous_liste_id' => $this->sousList->id,
         'statut_id' => Statut::where('slug', 'en-instance')->first()->id,
         'cne' => $militaire->cne]);
-
-      return;
-    }
-
-    public function rules(): array
-    {
-        return [
-          'sf' => ['required', Rule::in(['C','c','M','m', 'd', 'D'])],
-          'du' => 'required|date_format:d.m.y H:i',
-          'au' => 'required|date_format:d.m.y H:i',
-          'mission' => 'required',
-          'references' => 'required',
-        ];
     }
 }
