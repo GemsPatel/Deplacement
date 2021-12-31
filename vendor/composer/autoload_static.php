@@ -552,11 +552,14 @@ class ComposerStaticInitd1ccec432773cd5795daf27fcbed954b
     );
 
     public static $classMap = array (
+        'App\\Absence' => __DIR__ . '/../..' . '/app/Absence.php',
         'App\\Categorie' => __DIR__ . '/../..' . '/app/Categorie.php',
         'App\\Console\\Commands\\DeplacementAccorde' => __DIR__ . '/../..' . '/app/Console/Commands/DeplacementAccorde.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Deplacement' => __DIR__ . '/../..' . '/app/Deplacement.php',
+        'App\\Exception' => __DIR__ . '/../..' . '/app/Exception.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\General' => __DIR__ . '/../..' . '/app/General.php',
         'App\\Grade' => __DIR__ . '/../..' . '/app/Grade.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -585,9 +588,13 @@ class ComposerStaticInitd1ccec432773cd5795daf27fcbed954b
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\DateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/DateRequest.php',
         'App\\Http\\Requests\\DeplacementRequest' => __DIR__ . '/../..' . '/app/Http/Requests/DeplacementRequest.php',
+        'App\\Imports\\AbsenceImport' => __DIR__ . '/../..' . '/app/Imports/AbsenceImport.php',
+        'App\\Imports\\ExcelSheetDataImport' => __DIR__ . '/../..' . '/app/Imports/ExcelSheetDataImport.php',
+        'App\\Imports\\ExceptionImport' => __DIR__ . '/../..' . '/app/Imports/ExceptionImport.php',
         'App\\Imports\\ExceptionnelleImport' => __DIR__ . '/../..' . '/app/Imports/ExceptionnelleImport.php',
         'App\\Imports\\JournaliereImport' => __DIR__ . '/../..' . '/app/Imports/JournaliereImport.php',
         'App\\Imports\\ListeImport' => __DIR__ . '/../..' . '/app/Imports/ListeImport.php',
+        'App\\Imports\\NormalImport' => __DIR__ . '/../..' . '/app/Imports/NormalImport.php',
         'App\\Imports\\TemporaireImport' => __DIR__ . '/../..' . '/app/Imports/TemporaireImport.php',
         'App\\Liste' => __DIR__ . '/../..' . '/app/Liste.php',
         'App\\Militaire' => __DIR__ . '/../..' . '/app/Militaire.php',

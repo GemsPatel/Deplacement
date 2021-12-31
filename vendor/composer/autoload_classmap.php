@@ -6,11 +6,14 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Absence' => $baseDir . '/app/Absence.php',
     'App\\Categorie' => $baseDir . '/app/Categorie.php',
     'App\\Console\\Commands\\DeplacementAccorde' => $baseDir . '/app/Console/Commands/DeplacementAccorde.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Deplacement' => $baseDir . '/app/Deplacement.php',
+    'App\\Exception' => $baseDir . '/app/Exception.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\General' => $baseDir . '/app/General.php',
     'App\\Grade' => $baseDir . '/app/Grade.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -39,9 +42,13 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Requests\\DateRequest' => $baseDir . '/app/Http/Requests/DateRequest.php',
     'App\\Http\\Requests\\DeplacementRequest' => $baseDir . '/app/Http/Requests/DeplacementRequest.php',
+    'App\\Imports\\AbsenceImport' => $baseDir . '/app/Imports/AbsenceImport.php',
+    'App\\Imports\\ExcelSheetDataImport' => $baseDir . '/app/Imports/ExcelSheetDataImport.php',
+    'App\\Imports\\ExceptionImport' => $baseDir . '/app/Imports/ExceptionImport.php',
     'App\\Imports\\ExceptionnelleImport' => $baseDir . '/app/Imports/ExceptionnelleImport.php',
     'App\\Imports\\JournaliereImport' => $baseDir . '/app/Imports/JournaliereImport.php',
     'App\\Imports\\ListeImport' => $baseDir . '/app/Imports/ListeImport.php',
+    'App\\Imports\\NormalImport' => $baseDir . '/app/Imports/NormalImport.php',
     'App\\Imports\\TemporaireImport' => $baseDir . '/app/Imports/TemporaireImport.php',
     'App\\Liste' => $baseDir . '/app/Liste.php',
     'App\\Militaire' => $baseDir . '/app/Militaire.php',
